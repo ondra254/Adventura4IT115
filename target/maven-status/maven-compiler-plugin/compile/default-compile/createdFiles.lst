@@ -5,6 +5,7 @@ cz\vse\seso00\model\Vec.class
 cz\vse\seso00\model\PrikazKopej.class
 cz\vse\seso00\model\Prostor.class
 cz\vse\seso00\model\SeznamPrikazu.class
+cz\vse\seso00\MainController.class
 cz\vse\seso00\model\PrikazSeber.class
 cz\vse\seso00\model\PrikazObchod.class
 cz\vse\seso00\model\Hra.class
