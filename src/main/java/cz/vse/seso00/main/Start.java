@@ -52,11 +52,9 @@ public class Start extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        System.out.println("startuji");
-        primaryStage.setFullScreen(true);
-        primaryStage.setTitle("Pirát");
-        primaryStage.setResizable(true);
         primaryStage.show();
+        System.out.println("startuji");
+        primaryStage.setTitle("Pirát");
 
         FXMLLoader loader = new FXMLLoader();
         InputStream stream = getClass().getClassLoader().getResourceAsStream("scene.fxml");
@@ -64,9 +62,16 @@ public class Start extends Application {
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setFullScreen(false);
 
         MainController controller = loader.getController();
-        controller.init();
+        IHra hra = new Hra();
+        controller.init(hra,primaryStage);
 
+    }
+
+    @Override
+    public void init() throws Exception {
+        super.init();
     }
 }

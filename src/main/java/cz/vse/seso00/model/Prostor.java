@@ -116,6 +116,10 @@ public class Prostor {
         return nazev;
     }
 
+    public String getPopis() {
+        return popis;
+    }
+
     /**
      * Vrací "dlouhý" popis prostoru, který může vypadat následovně: Jsi v
      * mistnosti/prostoru vstupni hala budovy VSE na Jiznim meste. vychody:
