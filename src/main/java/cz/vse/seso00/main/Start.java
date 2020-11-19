@@ -58,13 +58,6 @@ public class Start extends Application {
         primaryStage.setResizable(true);
         primaryStage.show();
 
-        Label label1 = new Label("Ahoj 1");
-        Label label2 = new Label("Ahoj 2");
-        Label label3 = new Label("Ahoj 3");
-
-//        VBox rootLayout = new VBox(label1, label2, label3);
-//        rootLayout.setSpacing(20);
-
         FXMLLoader loader = new FXMLLoader();
         InputStream stream = getClass().getClassLoader().getResourceAsStream("scene.fxml");
         Parent root = loader.load(stream);

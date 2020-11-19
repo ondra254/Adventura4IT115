@@ -11,9 +11,6 @@
             fx:controller="cz.vse.seso00.MainController"
             prefHeight="400.0" prefWidth="600.0">
 
-    <Label fx:id="labelA">A</Label>
-    <Label fx:id="labelB">B</Label>
-    <Label fx:id="labelC">C</Label>
 
 
 </VBox>
