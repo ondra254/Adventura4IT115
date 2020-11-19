@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fa79e2de-eb8d-4f5e-bba6-cb34c8767001" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1kQjkYG0Q4OFMDuRtsmL6m6el6p" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="Application.Start">
+    <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cz.vse.seso00.main.Start" />
+      <module name="Adventura4IT115" />
+      <option name="PROGRAM_PARAMETERS" value="test.txt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cz.vse.seso00.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in Adventura4IT115" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Adventura4IT115" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BatohTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Adventura4IT115" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cz.vse.seso00.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cz.vse.seso00.model" />
+      <option name="MAIN_CLASS_NAME" value="cz.vse.seso00.model.BatohTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Start" />
+      <item itemvalue="JUnit.All in Adventura4IT115" />
+      <item itemvalue="JUnit.BatohTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Start" />
+        <item itemvalue="JUnit.All in Adventura4IT115" />
+        <item itemvalue="JUnit.BatohTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fa79e2de-eb8d-4f5e-bba6-cb34c8767001" name="Default Changelist" comment="" />
+      <created>1605639852214</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605639852214</updated>
+      <workItem from="1605639855389" duration="2648000" />
+      <workItem from="1605645211276" duration="14717000" />
+      <workItem from="1605746117497" duration="116000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="249" y="7" key="#Project_Structure" timestamp="1605746160692">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="249" y="7" key="#Project_Structure/0.0.1536.864@0.0.1536.864" timestamp="1605746160692" />
+    <state x="306" y="122" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605737574944">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="306" y="122" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1605737574944" />
+    <state x="93" y="93" width="1350" height="678" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1605642351440">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="93" y="93" width="1350" height="678" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.864@0.0.1536.864" timestamp="1605642351440" />
+    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1605656640735">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1605656640735" />
+    <state x="399" y="121" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1605641233173">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="399" y="121" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.864@0.0.1536.864" timestamp="1605641233173" />
+    <state width="1493" height="159" key="GridCell.Tab.0.bottom" timestamp="1605741938667">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="159" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1605741938667" />
+    <state width="1493" height="159" key="GridCell.Tab.0.center" timestamp="1605741938667">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="159" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1605741938667" />
+    <state width="1493" height="159" key="GridCell.Tab.0.left" timestamp="1605741938667">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="159" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1605741938667" />
+    <state width="1493" height="159" key="GridCell.Tab.0.right" timestamp="1605741938667">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="159" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1605741938667" />
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom" timestamp="1605739498484">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1605739498484" />
+    <state width="1493" height="277" key="GridCell.Tab.1.center" timestamp="1605739498484">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1605739498484" />
+    <state width="1493" height="277" key="GridCell.Tab.1.left" timestamp="1605739498484">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1605739498484" />
+    <state width="1493" height="277" key="GridCell.Tab.1.right" timestamp="1605739498484">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1605739498484" />
+    <state x="249" y="7" key="SettingsEditor" timestamp="1605746173438">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="249" y="7" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1605746173438" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1605739159658">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1605739159658" />
+    <state x="491" y="344" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1605743339312">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="491" y="344" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1536.864@0.0.1536.864" timestamp="1605743339312" />
+  </component>
+</project>
