@@ -1,0 +1,19 @@
+.label {
+    -fx-font-style: normal;
+    -fx-text-alignment: center;
+    
+}
+
+.text-area {
+    -fx-background-color: red;
+    -fx-border-color: red;
+}
+
+#top {
+    -fx-background-color: red;
+    -fx-border-color: red;
+}
+
+.root{
+    -fx-background-size: cover;
+}

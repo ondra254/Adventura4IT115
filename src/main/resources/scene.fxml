@@ -4,53 +4,85 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.seso00.MainController">
-    <top>
-        <VBox BorderPane.alignment="CENTER">
-            <Label fx:id="locationName"/>
-            <Label fx:id="locationDescription"/>
-        </VBox>
-    </top>
-    <left></left>
-    <right>
-        <VBox spacing="20" BorderPane.alignment="CENTER">
-            <Label>
-                <font>
-                    <Font size="15.0"/>
-                </font>
-            </Label>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
-            <VBox spacing="20">
+
+<StackPane stylesheets="styles.css" fx:controller="cz.vse.seso00.MainController"
+           xmlns="http://javafx.com/javafx/10.0.2-internal"
+           xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0">
+    <ImageView>
+        <Image url="/hora.jpg"/>
+    </ImageView>
+
+    <BorderPane prefHeight="400.0" prefWidth="600.0">
+        <top>
+            <VBox fx:id="top" BorderPane.alignment="CENTER">
+                <Label fx:id="locationName"/>
+                <Label fx:id="locationDescription"/>
+            </VBox>
+        </top>
+
+        <left></left>
+
+        <right>
+            <VBox spacing="20" BorderPane.alignment="CENTER">
                 <Label>
-                    <text>Východy</text>
                     <font>
                         <Font size="15.0"/>
                     </font>
                 </Label>
-                <VBox fx:id="exits"></VBox>
+
+                <VBox spacing="20">
+                    <Label>
+                        <text>Východy</text>
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Label>
+                    <VBox fx:id="exits"></VBox>
+                </VBox>
+
+                <VBox spacing="20">
+                    <Label>
+                        <text>Předměty</text>
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Label>
+                    <VBox fx:id="items"></VBox>
+                </VBox>
+
+                <VBox spacing="20">
+                    <Label>
+                        <text>Batoh</text>
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Label>
+                    <VBox fx:id="backpack"></VBox>
+                </VBox>
+
+                <VBox spacing="20">
+                    <Label>
+                        <text>NPC</text>
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Label>
+                    <VBox fx:id="npcs"></VBox>
+                </VBox>
 
             </VBox>
+        </right>
+
+        <bottom>
             <VBox>
-                <Label>
-                    <text>Předměty</text>
-                    <font>
-                        <Font size="15.0"/>
-                    </font>
-                </Label>
-                <VBox fx:id="items"></VBox>
-
+                <TextArea fx:id="textOutput" editable="false"></TextArea>
+                <TextField fx:id="textInput" onKeyPressed="#onInputKeyPressed"></TextField>
             </VBox>
-
-        </VBox>
-
-    </right>
-    <bottom>
-        <VBox>
-        <TextArea fx:id="textOutput" editable="false"></TextArea>
-        <TextField fx:id="textInput" onKeyPressed="#onInputKeyPressed"></TextField>
-        </VBox>
-    </bottom>
+        </bottom>
 
 
-</BorderPane>
+    </BorderPane>
+</StackPane>

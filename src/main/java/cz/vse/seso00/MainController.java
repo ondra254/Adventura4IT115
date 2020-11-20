@@ -1,9 +1,7 @@
 package cz.vse.seso00;
 
 
-import cz.vse.seso00.model.IHra;
-import cz.vse.seso00.model.Prostor;
-import cz.vse.seso00.model.Vec;
+import cz.vse.seso00.model.*;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -17,6 +15,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.InputStream;
 import java.util.Collection;
+import java.util.Map;
 
 
 public class MainController {
@@ -30,6 +29,8 @@ public class MainController {
 
     public VBox exits;
     public VBox items;
+    public VBox backpack;
+    public VBox npcs;
 
 
     public void init(IHra hra) {
@@ -48,6 +49,32 @@ public class MainController {
 
         updateExits();
         updateItems();
+        updateBatoh();
+        updateNpc();
+    }
+
+    private void updateNpc() {
+        Collection<Npc> npcList = getAktualniProstor().getNpcs().values();
+        npcs.getChildren().clear();
+
+        for (Npc npc : npcList) {
+            String npcName = npc.getNazev();
+            Label npcLabel = new Label(npcName);
+            InputStream Stream = getClass().getClassLoader().getResourceAsStream(npcName + ".jpg");
+            Image img = new Image(Stream);
+            ImageView imageView = new ImageView(img);
+            imageView.setFitWidth(60);
+            imageView.setFitHeight(40);
+            npcLabel.setGraphic(imageView);
+            npcLabel.setCursor(Cursor.HAND);
+
+            npcLabel.setOnMouseClicked(event -> {
+                executeCommand("obchod " + npcName);
+                //npc menu
+
+            });
+            npcs.getChildren().add(npcLabel);
+        }
     }
 
     private void updateItems() {
@@ -57,16 +84,16 @@ public class MainController {
         for (Vec item : itemList) {
             String itemName = item.getNazev();
             Label itemLabel = new Label(itemName);
+            InputStream Stream = getClass().getClassLoader().getResourceAsStream(itemName + ".jpg");
+            Image img = new Image(Stream);
+            ImageView imageView = new ImageView(img);
+            imageView.setFitWidth(60);
+            imageView.setFitHeight(40);
+            itemLabel.setGraphic(imageView);
+
             if (item.isPrenositelna()) {
                 itemLabel.setCursor(Cursor.HAND);
                 itemLabel.setTooltip(new Tooltip(item.getNazev()));
-
-                InputStream Stream = getClass().getClassLoader().getResourceAsStream(itemName + ".jpg");
-                Image img = new Image(Stream);
-                ImageView imageView = new ImageView(img);
-                imageView.setFitWidth(60);
-                imageView.setFitHeight(40);
-                itemLabel.setGraphic(imageView);
 
                 itemLabel.setOnMouseClicked(event -> {
                     executeCommand("seber " + itemName);
@@ -77,6 +104,36 @@ public class MainController {
             }
             items.getChildren().add(itemLabel);
         }
+    }
+    private void updateBatoh() {
+        Collection<Vec> itemList = getBatoh().getObsah();
+        backpack.getChildren().clear();
+        System.out.println(itemList);
+
+        for (Vec item : itemList) {
+            String itemName = item.getNazev();
+            Label itemLabel = new Label(itemName);
+            InputStream Stream = getClass().getClassLoader().getResourceAsStream(itemName + ".jpg");
+            assert Stream != null;
+            Image img = new Image(Stream);
+            ImageView imageView = new ImageView(img);
+            imageView.setFitWidth(60);
+            imageView.setFitHeight(40);
+            itemLabel.setGraphic(imageView);
+
+//            if (item.isPrenositelna()) {
+//                itemLabel.setCursor(Cursor.HAND);
+//                itemLabel.setTooltip(new Tooltip(item.getNazev()));
+//
+//                itemLabel.setOnMouseClicked(event -> {
+//                    executeCommand("seber " + itemName);
+//                });
+//
+//            } else {
+//                itemLabel.setTooltip(new Tooltip("Tato vec neni prenositelna  "));
+//            }
+//            items.getChildren().add(itemLabel);
+       }
     }
 
     private void updateExits() {
@@ -90,6 +147,7 @@ public class MainController {
             exitLabel.setTooltip(new Tooltip(prostor.getPopis()));
 
             InputStream Stream = getClass().getClassLoader().getResourceAsStream(exitName + ".jpg");
+            assert Stream != null;
             Image img = new Image(Stream);
             ImageView imageView = new ImageView(img);
             imageView.setFitWidth(60);
@@ -110,6 +168,10 @@ public class MainController {
         String result = hra.zpracujPrikaz(command);
         textOutput.appendText(result + "\n\n");
         update();
+    }
+
+    private Batoh getBatoh() {
+        return hra.getHerniPlan().getBatoh();
     }
 
     private Prostor getAktualniProstor() {

@@ -1,5 +1,7 @@
 package cz.vse.seso00.model;
 
+import cz.vse.seso00.MainController;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -47,10 +49,17 @@ public class Prostor {
         neviditelneVeci = new HashMap<>();
     }
 
+    public Map<String, Npc> getNpcs() {
+        return npcs;
+    }
+
     public Map<String, Vec> getVeci() {
         return veci;
     }
 
+    public Map<String, Vec> getNeviditelneVeci() {
+        return neviditelneVeci;
+    }
     /**
      * Definuje východ z prostoru (sousední/vedlejsi prostor). Vzhledem k tomu,
      * že je použit Set pro uložení východů, může být sousední prostor uveden
