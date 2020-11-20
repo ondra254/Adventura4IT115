@@ -47,6 +47,10 @@ public class Prostor {
         neviditelneVeci = new HashMap<>();
     }
 
+    public Map<String, Vec> getVeci() {
+        return veci;
+    }
+
     /**
      * Definuje východ z prostoru (sousední/vedlejsi prostor). Vzhledem k tomu,
      * že je použit Set pro uložení východů, může být sousední prostor uveden

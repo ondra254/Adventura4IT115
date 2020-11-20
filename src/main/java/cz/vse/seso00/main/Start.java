@@ -52,7 +52,7 @@ public class Start extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.show();
+
         System.out.println("startuji");
         primaryStage.setTitle("Pirát");
 
@@ -62,16 +62,16 @@ public class Start extends Application {
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setFullScreen(false);
+        primaryStage.setFullScreen(true);
 
         MainController controller = loader.getController();
         IHra hra = new Hra();
-        controller.init(hra,primaryStage);
+        controller.init(hra);
+
+        primaryStage.show();
+
 
     }
 
-    @Override
-    public void init() throws Exception {
-        super.init();
-    }
+
 }
