@@ -33,6 +33,8 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
 
+
+
         // vytvářejí se jednotlivé prostory
         Prostor jeskyne = new Prostor("jeskyně","Temná jeskyně",false);
         Prostor palmovyHaj = new Prostor("palmový_háj", "Háj s banánovníky a kokosovými palmami",false);
@@ -118,6 +120,7 @@ public class HerniPlan {
         jeskyne.pridejNpc(padouch);
 
         aktualniProstor = most;  // hra začíná na mostě
+
     }
     
     /**

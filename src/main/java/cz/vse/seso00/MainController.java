@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.InputStream;
@@ -31,6 +32,7 @@ public class MainController {
     public VBox items;
     public VBox backpack;
     public VBox npcs;
+    public StackPane aktualniProstor;
 
 
     public void init(IHra hra) {
@@ -51,6 +53,7 @@ public class MainController {
         updateItems();
         updateBatoh();
         updateNpc();
+//        getBackground();
     }
 
     private void updateNpc() {
@@ -106,11 +109,11 @@ public class MainController {
         }
     }
     private void updateBatoh() {
-        Collection<Vec> itemList = getBatoh().getObsah();
+        Collection<Vec> obsahList = getBatoh().getObsah();
         backpack.getChildren().clear();
-        System.out.println(itemList);
 
-        for (Vec item : itemList) {
+
+        for (Vec item : obsahList) {
             String itemName = item.getNazev();
             Label itemLabel = new Label(itemName);
             InputStream Stream = getClass().getClassLoader().getResourceAsStream(itemName + ".jpg");
@@ -120,19 +123,9 @@ public class MainController {
             imageView.setFitWidth(60);
             imageView.setFitHeight(40);
             itemLabel.setGraphic(imageView);
+            itemLabel.setCursor(Cursor.HAND);
 
-//            if (item.isPrenositelna()) {
-//                itemLabel.setCursor(Cursor.HAND);
-//                itemLabel.setTooltip(new Tooltip(item.getNazev()));
-//
-//                itemLabel.setOnMouseClicked(event -> {
-//                    executeCommand("seber " + itemName);
-//                });
-//
-//            } else {
-//                itemLabel.setTooltip(new Tooltip("Tato vec neni prenositelna  "));
-//            }
-//            items.getChildren().add(itemLabel);
+
        }
     }
 
@@ -147,7 +140,6 @@ public class MainController {
             exitLabel.setTooltip(new Tooltip(prostor.getPopis()));
 
             InputStream Stream = getClass().getClassLoader().getResourceAsStream(exitName + ".jpg");
-            assert Stream != null;
             Image img = new Image(Stream);
             ImageView imageView = new ImageView(img);
             imageView.setFitWidth(60);
@@ -163,6 +155,21 @@ public class MainController {
         }
 
     }
+
+//    private void getBackground(){
+//        aktualniProstor.getChildren().clear();
+//        Prostor prostor = hra.getHerniPlan().getAktualniProstor();
+//        String prostorName = prostor.getNazev();
+//
+//
+//        InputStream Stream = getClass().getClassLoader().getResourceAsStream(prostorName + ".jpg");
+//        Image img = new Image(Stream);
+//        ImageView imageView = new ImageView(img);
+//
+//        aktualniProstor.getChildren().add(imageView);
+//
+//
+//    }
 
     private void executeCommand(String command) {
         String result = hra.zpracujPrikaz(command);

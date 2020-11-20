@@ -1,7 +1,6 @@
 .label {
     -fx-font-style: normal;
-    -fx-text-alignment: center;
-    
+    -fx-alignment: center;
 }
 
 .text-area {
@@ -15,5 +14,7 @@
 }
 
 .root{
+    -fx-background-image: url("jeskyně.jpg");
     -fx-background-size: cover;
 }
+

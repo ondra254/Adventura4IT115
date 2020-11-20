@@ -191,6 +191,7 @@ public class Prostor {
 
     }
 
+
     /**
      * Vrací prostor, který sousedí s aktuálním prostorem a jehož název je zadán
      * jako parametr. Pokud prostor s udaným jménem nesousedí s aktuálním
