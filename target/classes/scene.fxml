@@ -47,8 +47,8 @@
     </right>
     <bottom>
         <VBox>
-        <TextArea fx:id="textOutput"></TextArea>
-        <TextField fx:id="textInput"></TextField>
+        <TextArea fx:id="textOutput" editable="false"></TextArea>
+        <TextField fx:id="textInput" onKeyPressed="#onInputKeyPressed"></TextField>
         </VBox>
     </bottom>
 

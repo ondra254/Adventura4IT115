@@ -73,7 +73,7 @@ public class HerniPlan {
         Vec pivo = new Vec("pivo","chlazená Plznička",true);
         Vec regal = new Vec("regál", "regál se zbraněmi", false);
         Vec zlatyNuget = new Vec("zlatý_nuget","zlatý nuget",true);
-        Vec kamen = new Vec("kamen","zde",true);
+        Vec kamen = new Vec("kámen","zde",true);
         Vec balvan = new Vec("balvan","obří balvan",false);
         Vec koste = new Vec("koště","staré koště",true);
         Vec skrin = new Vec("skříň","velká dubová almara",false);
