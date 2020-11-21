@@ -45,9 +45,9 @@ public class Batoh {
             return vec;
     }
 
-    public Collection<Vec> getObsah() {
-        List<Vec> list = new ArrayList<Vec>(obsah.values());
-        return list;
+    public Map<String, Vec> getObsah(){
+    return obsah;
+
     }
 
     /**

@@ -11,7 +11,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.InputStream;
@@ -32,7 +31,7 @@ public class MainController {
     public VBox items;
     public VBox backpack;
     public VBox npcs;
-    public StackPane aktualniProstor;
+    public ImageView updateBackground;
 
 
     public void init(IHra hra) {
@@ -53,7 +52,7 @@ public class MainController {
         updateItems();
         updateBatoh();
         updateNpc();
-//        getBackground();
+        updateBackground();
     }
 
     private void updateNpc() {
@@ -62,6 +61,7 @@ public class MainController {
 
         for (Npc npc : npcList) {
             String npcName = npc.getNazev();
+            String chce = npc.getChce().getNazev();
             Label npcLabel = new Label(npcName);
             InputStream Stream = getClass().getClassLoader().getResourceAsStream(npcName + ".jpg");
             Image img = new Image(Stream);
@@ -71,9 +71,14 @@ public class MainController {
             npcLabel.setGraphic(imageView);
             npcLabel.setCursor(Cursor.HAND);
 
+
             npcLabel.setOnMouseClicked(event -> {
-                executeCommand("obchod " + npcName);
+                if(!npc.getBoj()){
+               executeCommand("obchod " + npcName +" "+ chce );
                 //npc menu
+                    }else{
+                    executeCommand("napadnout " + npcName);
+                }
 
             });
             npcs.getChildren().add(npcLabel);
@@ -109,21 +114,25 @@ public class MainController {
         }
     }
     private void updateBatoh() {
-        Collection<Vec> obsahList = getBatoh().getObsah();
+        Collection<Vec> obsahList = hra.getHerniPlan().getBatoh().getObsah().values();
         backpack.getChildren().clear();
 
 
         for (Vec item : obsahList) {
             String itemName = item.getNazev();
             Label itemLabel = new Label(itemName);
-            InputStream Stream = getClass().getClassLoader().getResourceAsStream(itemName + ".jpg");
-            assert Stream != null;
-            Image img = new Image(Stream);
+            InputStream stream = getClass().getClassLoader().getResourceAsStream(itemName + ".jpg");
+            Image img = new Image(stream);
             ImageView imageView = new ImageView(img);
             imageView.setFitWidth(60);
             imageView.setFitHeight(40);
             itemLabel.setGraphic(imageView);
             itemLabel.setCursor(Cursor.HAND);
+            itemLabel.setOnMouseClicked(event -> {
+                executeCommand("odlož " + itemName);
+            })
+            ;
+            backpack.getChildren().add(itemLabel);
 
 
        }
@@ -156,20 +165,19 @@ public class MainController {
 
     }
 
-//    private void getBackground(){
-//        aktualniProstor.getChildren().clear();
-//        Prostor prostor = hra.getHerniPlan().getAktualniProstor();
-//        String prostorName = prostor.getNazev();
-//
-//
-//        InputStream Stream = getClass().getClassLoader().getResourceAsStream(prostorName + ".jpg");
-//        Image img = new Image(Stream);
-//        ImageView imageView = new ImageView(img);
-//
-//        aktualniProstor.getChildren().add(imageView);
-//
-//
-//    }
+    private void updateBackground(){
+
+        Prostor prostor = hra.getHerniPlan().getAktualniProstor();
+        String prostorName = prostor.getNazev();
+
+
+        InputStream Stream = getClass().getClassLoader().getResourceAsStream(prostorName + ".jpg");
+        Image img = new Image(Stream);
+
+        updateBackground.setImage(img);
+
+
+    }
 
     private void executeCommand(String command) {
         String result = hra.zpracujPrikaz(command);
@@ -177,9 +185,6 @@ public class MainController {
         update();
     }
 
-    private Batoh getBatoh() {
-        return hra.getHerniPlan().getBatoh();
-    }
 
     private Prostor getAktualniProstor() {
 

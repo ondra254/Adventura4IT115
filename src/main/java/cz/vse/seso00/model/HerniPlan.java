@@ -43,7 +43,7 @@ public class HerniPlan {
         Prostor hospoda = new Prostor("hospoda", "Hospůdka u Lachtana",false);
         Prostor hora = new Prostor("hora","Vysoká hora",false);
         Prostor zbrojirna = new Prostor("zbrojírna","Zatuchlá zbrojírna",false);
-        Prostor most = new Prostor("most" , "Most spojující Ostrov Lebek a Ostrov Smůly",false);
+        Prostor most = new Prostor("most","Most spojující Ostrov Lebek a Ostrov Smůly",false);
 
         // přiřazují se průchody mezi prostory (sousedící prostory)
         jeskyne.setVychod(palmovyHaj);
@@ -87,6 +87,7 @@ public class HerniPlan {
         Vec truhla = new Vec("truhla","truhla s pokladem",false);
         Vec prkno = new Vec("prkno","zlomené prkno", true);
         Vec podtacek = new Vec( "podtácek", "podtácek pod pivo", true);
+        Vec smrt = new Vec("smrt","smrt",true);
 
         //Přidání věcí do prostoru
         hora.pridejVec(zlatyNuget);
@@ -110,7 +111,7 @@ public class HerniPlan {
         //Vytvoření npc
         Npc hospodsky = new Npc("hospodský", "Potřeboval bych kokos, když mi ho seženeš tak ti za něj dám lopatu.",kokos,lopata,false, true);
         Npc zbrojir = new Npc("zbrojíř", "Jsem ochotný ti prodat tento meč za kus zlata, zkus se podívat na nedalekou horu.",zlatyNuget,mec,false,true);
-        Npc padouch = new Npc("padouch","jsem padouch",null ,klic,true,false);
+        Npc padouch = new Npc("padouch","jsem padouch",smrt ,klic,true,false);
         Npc opilec = new Npc("opilec","Podle legend zde na souostroví ztroskotala loď s pokladem.",banan,pivo,false,true);
 
         //Přidání npc do prostoru
