@@ -45,7 +45,7 @@ public class MainController {
     public void init(IHra hra) {
         this.hra = hra;
         update();
-        hra.vratUvitani();
+        textOutput.appendText(hra.vratUvitani());
     }
 
     private void update() {
@@ -257,6 +257,7 @@ public class MainController {
 
         executeCommand("konec");
         textOutput.clear();
+        textOutput.setText("restaroval jsi hru\n\n");
         init(new Hra());
     }
 }

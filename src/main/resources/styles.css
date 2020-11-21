@@ -1,3 +1,31 @@
 .label{
-    -fx-text-fill: red;
+    -fx-text-fill: black;
+    -fx-font-size: 20px;
+    -fx-font-style: normal;
+}
+.nadpis{
+    -fx-background-color: #F4F6F7;
+}
+
+.button{
+    -fx-font-size: 20;
+    -fx-background-color: #F4F6F7;
+
+}
+
+.vychody{
+    -fx-background-color: #F4F6F7;
+
+}
+
+.predmety{
+    -fx-background-color: #F4F6F7;
+}
+
+.npcs{
+    -fx-background-color: #F4F6F7;
+}
+
+.batoh {
+    -fx-background-color: peru;
 }
