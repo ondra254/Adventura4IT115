@@ -11,17 +11,14 @@ public class PrikazKopej implements IPrikaz {
 
     private static final String NAZEV = "kopej";
     private final HerniPlan plan;
-    private final Batoh batoh;
 
     /**
      *  Konstruktor třídy
      *
      *  @param plan herní plán, ve kterém se bude ve hře "chodit"
-     *  @param batoh batoh který nosíš
      */
-    public PrikazKopej(HerniPlan plan, Batoh batoh) {
+    public PrikazKopej(HerniPlan plan) {
         this.plan = plan;
-        this.batoh = batoh;
     }
 
     /**
@@ -42,7 +39,7 @@ public class PrikazKopej implements IPrikaz {
         String nazevVeci = parametry[0];
         Prostor aktualniProstor = plan.getAktualniProstor();
 
-        if (batoh.obsahujeVec("lopata")){
+        if (plan.getBatoh().obsahujeVec("lopata")){
             if (aktualniProstor.jeTruhla()) {
                 Vec vec = aktualniProstor.odstranNevVec(nazevVeci);
                 if (vec == null) {

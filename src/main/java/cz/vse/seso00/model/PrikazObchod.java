@@ -13,17 +13,15 @@ public class PrikazObchod implements IPrikaz {
 
     private static final String NAZEV = "obchod";
     private final HerniPlan plan;
-    private final Batoh batoh;
 
     /**
      *  Konstruktor třídy
      *
      *  @param plan herní plán, ve kterém se bude ve hře "chodit"
-     *  @param batoh batoh který nosíš
      */
-    public PrikazObchod(HerniPlan plan, Batoh batoh){
+    public PrikazObchod(HerniPlan plan){
         this.plan = plan;
-        this.batoh = batoh;}
+    }
 
     /**
      *  Provádí příkaz "obchod". Otestuje jestli jsi zadal parametr,
@@ -58,10 +56,10 @@ public class PrikazObchod implements IPrikaz {
             if (davam.equals(chce.getNazev())) {
                 if (npc.getObchod()) {
                     if (!npc.getVymeneno()) {
-                        if (batoh.obsahujeVec(chce.getNazev())) {
+                        if (plan.getBatoh().obsahujeVec(chce.getNazev())) {
                             Map<String, Vec> vymena = npc.vymenitVec();
-                            batoh.odeberVec(vymena.get("odeber").getNazev());
-                            batoh.vlozVec(vymena.get("pridej"));
+                            plan.getBatoh().odeberVec(vymena.get("odeber").getNazev());
+                            plan.getBatoh().vlozVec(vymena.get("pridej"));
                             npc.setDava(null);
                             return "Dostal jsi " + dava.getNazev() + " za " + chce.getNazev();
                         }

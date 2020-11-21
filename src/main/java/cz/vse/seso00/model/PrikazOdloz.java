@@ -11,17 +11,14 @@ public class PrikazOdloz implements IPrikaz {
 
     private static final String NAZEV = "odlož";
     private final HerniPlan plan;
-    private final Batoh batoh;
 
     /**
      *  Konstruktor třídy
      *
      *  @param plan herní plán, ve kterém se bude ve hře "chodit"
-     *  @param batoh batoh který nosíš
      */
-    public PrikazOdloz(HerniPlan plan, Batoh batoh) {
+    public PrikazOdloz(HerniPlan plan) {
         this.plan = plan;
-        this.batoh = batoh;
     }
 
     /**
@@ -42,14 +39,14 @@ public class PrikazOdloz implements IPrikaz {
 
         String nazevVeci = parametry[0];
         Prostor aktualniProstor = plan.getAktualniProstor();
-        Vec vec = batoh.odeberVec(nazevVeci);
+        Vec vec = plan.getBatoh().odeberVec(nazevVeci);
 
         if (vec == null) {
             return "Tuhle věc v batohu nemáš";
         }
         else {
             aktualniProstor.pridejVec(vec);
-            batoh.odeberVec(vec);
+            plan.getBatoh().odeberVec(vec);
             return "Odložil jsi " + nazevVeci;
         }
     }
