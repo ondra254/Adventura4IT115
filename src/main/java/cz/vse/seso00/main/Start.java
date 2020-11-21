@@ -39,16 +39,21 @@ public class Start extends Application {
 
         List<String> vstup = Arrays.asList(args);
 
-
         if (vstup.contains("text")) {
             ui.hraj();
 
-        } else if (vstup.contains(".txt")) {
-            ui.hrajZeSouboru(args[0]);
+//        } else if (vstup.contains(".txt")) {
+//            ui.hrajZeSouboru(args[0]);
+
         } else {
             launch();
         }
     }
+    /***************************************************************************
+     * Metoda, prostřednictvím níž se spouští javaFx aplikace.
+     *
+     * @param primaryStage
+     */
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -68,8 +73,6 @@ public class Start extends Application {
 
         primaryStage.setMinWidth(1760);
         primaryStage.setMinHeight(990);
-
-
 
         MainController controller = loader.getController();
         IHra hra = new Hra();

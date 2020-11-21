@@ -2,14 +2,15 @@
     -fx-text-fill: black;
     -fx-font-size: 20px;
     -fx-font-style: normal;
+
 }
 .nadpis{
     -fx-background-color: #F4F6F7;
+    -fx-font-weight: bold;
 }
 
 .button{
     -fx-font-size: 20;
-    -fx-background-color: #F4F6F7;
 
 }
 

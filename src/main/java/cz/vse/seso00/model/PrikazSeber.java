@@ -11,17 +11,14 @@ public class PrikazSeber implements IPrikaz {
 
     private static final String NAZEV = "seber";
     private final HerniPlan plan;
-//    private final Batoh batoh;
 
     /**
      *  Konstruktor třídy
      *
      *  @param plan herní plán, ve kterém se bude ve hře "chodit"
-//     *  @param batoh batoh který nosíš
      */
     public PrikazSeber(HerniPlan plan) {
         this.plan = plan;
-//        this.batoh = batoh;
 
     }
 

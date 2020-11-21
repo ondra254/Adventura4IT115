@@ -25,7 +25,12 @@ import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Map;
 
-
+/*******************************************************************************
+ * Třída MainController slouží k ovládání grafické verze aplikace
+ *
+ * @author Ondřej Šesták
+ * @version listopad 2020 (1.0)
+ */
 public class MainController {
 
     public TextArea textOutput;
@@ -42,19 +47,29 @@ public class MainController {
     public ImageView updateBackground;
     public Button kopat;
 
+    /**
+     * Metoda inicializujíci hru
+     *
+     * @param hra
+     */
     public void init(IHra hra) {
         this.hra = hra;
         update();
-        textOutput.appendText(hra.vratUvitani());
+        textOutput.appendText(hra.vratUvitani() + "\n");
     }
 
+    /**
+     * Metoda která aktualizuje všechny prvky
+     * nacházející se na scéně (východy,předměty,batoh,npc,pozadí)
+     * a zviditelní tlačítko na kopání pokud je v batohu lopata.
+     * Zárověň všechny prvky zamkne, pokud je hra u konce.
+     */
     private void update() {
-        String location = getAktualniProstor().getNazev();
-        locationName.setText(location);
+//        String location = getAktualniProstor().getNazev();
+//        locationName.setText(location);
 
         String description = getAktualniProstor().getPopis();
         locationDescription.setText(description);
-
 
         updateExits();
         updateItems();
@@ -65,20 +80,25 @@ public class MainController {
         if (hra.getHerniPlan().getBatoh().obsahujeVec("lopata")) {
             kopat.setVisible(true);
 
-
         } else {
             kopat.setVisible(false);
         }
 
-        if (hra.konecHry()){
-            hra.vratEpilog();
+        if (hra.konecHry()) {
+            kopat.setVisible(false);
+            textOutput.appendText(hra.vratEpilog());
             textInput.setVisible(false);
-
-        }else {textInput.setVisible(true);
-
+        } else {
+            textInput.setVisible(true);
         }
     }
 
+    /**
+     * Metoda která aktualizuje a následně zobrazuje
+     * npc nacházející se v aktuálním prostoru
+     * v podobě názvu postavy a jejího obrázku.
+     * Zároveň při kliknutí na obrázek nebo název proběhne interakce s danou postavou.
+     */
     private void updateNpc() {
         Collection<Npc> npcList = getAktualniProstor().getNpcs().values();
         npcs.getChildren().clear();
@@ -93,23 +113,30 @@ public class MainController {
             imageView.setFitWidth(60);
             imageView.setFitHeight(40);
             npcLabel.setGraphic(imageView);
-            if (!hra.konecHry()){
-            npcLabel.setCursor(Cursor.HAND);
+            if (!hra.konecHry()) {
+                npcLabel.setCursor(Cursor.HAND);
 
 
-            npcLabel.setOnMouseClicked(event -> {
-                if (!npc.getBoj()) {
-                    executeCommand("obchod " + npcName + " " + chce);
-                    //npc menu
-                } else {
-                    executeCommand("napadnout " + npcName);
-                }
+                npcLabel.setOnMouseClicked(event -> {
+                    if (!npc.getBoj()) {
+                        executeCommand("obchod " + npcName + " " + chce);
+                        //npc menu
+                    } else {
+                        executeCommand("napadnout " + npcName);
+                    }
 
-            });}
+                });
+            }
             npcs.getChildren().add(npcLabel);
         }
     }
 
+    /**
+     * Metoda která aktualizuje a následně zobrazuje
+     * věci nacházející se v aktuálním prostoru
+     * v podobě názvu předmětu a jeho obrázku.
+     * Zároveň při kliknutí na obrázek nebo název daný předmět sebere a vloží jej do batohu.
+     */
     private void updateItems() {
         Collection<Vec> itemList = getAktualniProstor().getVeci().values();
         items.getChildren().clear();
@@ -124,28 +151,34 @@ public class MainController {
             imageView.setFitHeight(40);
             itemLabel.setGraphic(imageView);
 
-            if (!hra.konecHry()){
-            if (item.isPrenositelna()) {
-                itemLabel.setCursor(Cursor.HAND);
-                itemLabel.setTooltip(new Tooltip(item.getNazev()));
+            if (!hra.konecHry()) {
+                if (item.isPrenositelna()) {
+                    itemLabel.setCursor(Cursor.HAND);
+                    itemLabel.setTooltip(new Tooltip(item.getNazev()));
 
-                itemLabel.setOnMouseClicked(event -> {
-                    executeCommand("seber " + itemName);
-                });
+                    itemLabel.setOnMouseClicked(event -> {
+                        executeCommand("seber " + itemName);
+                    });
 
-            } else if (item.getNazev().equals("truhla")) {
-                itemLabel.setCursor(Cursor.HAND);
-                itemLabel.setOnMouseClicked(event -> {
-                    executeCommand("odemkni " + itemName);
-                });
+                } else if (item.getNazev().equals("truhla")) {
+                    itemLabel.setCursor(Cursor.HAND);
+                    itemLabel.setOnMouseClicked(event -> {
+                        executeCommand("odemkni " + itemName);
+                    });
 
-            } else {
-                itemLabel.setTooltip(new Tooltip("Tato vec neni prenositelna  "));
-            }}
+                } else {
+                    itemLabel.setTooltip(new Tooltip("Tato vec neni prenositelna  "));
+                }
+            }
             items.getChildren().add(itemLabel);
         }
     }
 
+    /**
+     * Metoda která aktualizuje a následně zobrazuje věci v batohu
+     * v podobě názvu předmětu a jeho obrázku.
+     * Zároveň při kliknutí na obrázek nebo název daný předmět odloží na zem v aktuálním prostoru.
+     */
     private void updateBatoh() {
         Collection<Vec> obsahList = hra.getHerniPlan().getBatoh().getObsah().values();
         backpack.getChildren().clear();
@@ -160,18 +193,24 @@ public class MainController {
             imageView.setFitWidth(60);
             imageView.setFitHeight(40);
             itemLabel.setGraphic(imageView);
-            if (!hra.konecHry()){
-            itemLabel.setCursor(Cursor.HAND);
-            itemLabel.setOnMouseClicked(event -> {
-                executeCommand("odlož " + itemName);
-            })
-            ;}
+            if (!hra.konecHry()) {
+                itemLabel.setCursor(Cursor.HAND);
+                itemLabel.setOnMouseClicked(event -> {
+                    executeCommand("odlož " + itemName);
+                })
+                ;
+            }
             backpack.getChildren().add(itemLabel);
 
 
         }
     }
 
+    /**
+     * Metoda která aktualizuje a následně zobrazuje východy
+     * z aktuálního prostoru v podobě názvu východu a jeho obrázku.
+     * Zároveň při kliknutí na obrázek nebo název do daného prostoru vstoupí.
+     */
     private void updateExits() {
         Collection<Prostor> exitList = getAktualniProstor().getVychody();
         exits.getChildren().clear();
@@ -188,19 +227,24 @@ public class MainController {
             imageView.setFitWidth(60);
             imageView.setFitHeight(40);
             exitLabel.setGraphic(imageView);
-            if (!hra.konecHry()){
-            exitLabel.setCursor(Cursor.HAND);
+            if (!hra.konecHry()) {
+                exitLabel.setCursor(Cursor.HAND);
 
-            exitLabel.setOnMouseClicked(event -> {
-                executeCommand("jdi " + exitName);
+                exitLabel.setOnMouseClicked(event -> {
+                    executeCommand("jdi " + exitName);
 
-            });}
+                });
+            }
             exits.getChildren().add(exitLabel);
 
         }
 
     }
 
+    /**
+     * Metoda která aktualizuje a následovně zobrazuje
+     * obsah batohu v podobě názvu itemu a jeho obrázku.
+     */
     private void updateBackground() {
 
         Prostor prostor = hra.getHerniPlan().getAktualniProstor();
@@ -217,19 +261,33 @@ public class MainController {
 
     }
 
+    /**
+     * Metoda která provede příkaž
+     * zadaný v parametru a aktualizuje hru.
+     *
+     * @param command
+     */
     private void executeCommand(String command) {
         String result = hra.zpracujPrikaz(command);
         textOutput.appendText(result + "\n\n");
         update();
     }
 
-
+    /**
+     * Metoda která vrací aktuální prostor.
+     *
+     * @return aktualniProstor
+     */
     private Prostor getAktualniProstor() {
-
         return hra.getHerniPlan().getAktualniProstor();
     }
 
-
+    /**
+     * Metoda která při stlačení entru
+     * odešle příkaz z textového pole ke zpracování.
+     *
+     * @param keyEvent
+     */
     public void onInputKeyPressed(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             executeCommand(textInput.getText());
@@ -237,11 +295,23 @@ public class MainController {
         }
     }
 
+    /**
+     * Metoda která provede příkaz kopej
+     * když proběhne actionEvent.
+     *
+     * @param actionEvent
+     */
     public void kopat(ActionEvent actionEvent) {
         executeCommand("kopej truhla");
     }
 
-
+    /**
+     * Metoda která otevře prohlížeč a
+     * zobrazí nápovědu v podobě html souboru
+     * když proběhne actionEvent.
+     *
+     * @param actionEvent
+     */
     public void napoveda(ActionEvent actionEvent) {
         try {
             Desktop desktop = java.awt.Desktop.getDesktop();
@@ -252,7 +322,12 @@ public class MainController {
         }
     }
 
-
+    /**
+     * Metoda která začne novou hru
+     * když proběhne actionEvent.
+     *
+     * @param actionEvent
+     */
     public void novahra(ActionEvent actionEvent) {
 
         executeCommand("konec");

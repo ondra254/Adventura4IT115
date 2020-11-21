@@ -44,6 +44,10 @@ public class Batoh {
             return vec;
     }
 
+    /**
+     * zobrazí obsah batohu
+     * @return vrati seznam věcí v batohu
+     */
     public Map<String, Vec> getObsah(){
     return obsah;
 

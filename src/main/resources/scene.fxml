@@ -88,8 +88,8 @@
                     </MenuBar>
 
                     <VBox alignment="CENTER" prefHeight="100" prefWidth="1600" >
-                        <Label fx:id="locationName" alignment="CENTER" styleClass="nadpis"/>
-                        <Label fx:id="locationDescription" alignment="CENTER" styleClass="nadpis"/>
+<!--                        <Label fx:id="locationName" alignment="CENTER" />-->
+                        <Label fx:id="locationDescription" alignment="CENTER" />
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>
