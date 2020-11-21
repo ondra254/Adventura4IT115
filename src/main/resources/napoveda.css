@@ -1,11 +1,12 @@
-body{
+body {
     text-align: center;
 }
-p{
+
+p {
     margin: 20px;
 }
 
-img{
+img {
     width: 500px;
     height: 250px;
 }

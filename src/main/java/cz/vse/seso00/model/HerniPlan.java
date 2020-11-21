@@ -75,7 +75,7 @@ public class HerniPlan {
         Vec zidle = new Vec("židle","rozvrzaná židle", false);
         Vec pivo = new Vec("pivo","chlazená Plznička",true);
         Vec regal = new Vec("regál", "regál se zbraněmi", false);
-        Vec zlatyNuget = new Vec("zlatý_nuget","zlatý nuget",true);
+        Vec zlato = new Vec("zlato","zlatý nuget",true);
         Vec kamen = new Vec("kámen","zde",true);
         Vec balvan = new Vec("balvan","obří balvan",false);
         Vec koste = new Vec("koště","staré koště",true);
@@ -91,7 +91,7 @@ public class HerniPlan {
         Vec smrt = new Vec("smrt","smrt",true);
 
         //Přidání věcí do prostoru
-        hora.pridejVec(zlatyNuget);
+        hora.pridejVec(zlato);
         hora.pridejVec(kamen);
         hora.pridejVec(balvan);
         zbrojirna.pridejVec(koste);
@@ -109,7 +109,7 @@ public class HerniPlan {
 
         //Vytvoření npc
         Npc hospodsky = new Npc("hospodský", "Potřeboval bych kokos, když mi ho seženeš tak ti za něj dám lopatu.",kokos,lopata,false, true);
-        Npc zbrojir = new Npc("zbrojíř", "Jsem ochotný ti prodat tento meč za kus zlata, zkus se podívat na nedalekou horu.",zlatyNuget,mec,false,true);
+        Npc zbrojir = new Npc("zbrojíř", "Jsem ochotný ti prodat tento meč za kus zlata, zkus se podívat na nedalekou horu.",zlato,mec,false,true);
         Npc padouch = new Npc("padouch","jsem padouch",smrt ,klic,true,false);
         Npc opilec = new Npc("opilec","Podle legend zde na souostroví ztroskotala loď s pokladem.",banan,pivo,false,true);
 

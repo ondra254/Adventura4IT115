@@ -1,29 +1,30 @@
-.label{
+.label {
     -fx-text-fill: black;
     -fx-font-size: 20px;
     -fx-font-style: normal;
 
 }
-.nadpis{
+
+.nadpis {
     -fx-background-color: #F4F6F7;
     -fx-font-weight: bold;
 }
 
-.button{
+.button {
     -fx-font-size: 20;
 
 }
 
-.vychody{
+.vychody {
     -fx-background-color: #F4F6F7;
 
 }
 
-.predmety{
+.predmety {
     -fx-background-color: #F4F6F7;
 }
 
-.npcs{
+.npcs {
     -fx-background-color: #F4F6F7;
 }
 

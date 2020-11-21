@@ -6,11 +6,13 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane stylesheets="styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.seso00.MainController">
+<StackPane stylesheets="styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="cz.vse.seso00.MainController">
     <ImageView fx:id="updateBackground" fitHeight="311.0" fitWidth="800" pickOnBounds="true" preserveRatio="true">
-      <StackPane.margin>
-         <Insets bottom="200.0" />
-      </StackPane.margin></ImageView>
+        <StackPane.margin>
+            <Insets bottom="200.0"/>
+        </StackPane.margin>
+    </ImageView>
 
     <BorderPane>
 
@@ -20,28 +22,28 @@
                     <Label>
                         Východy
                     </Label>
-                    <VBox fx:id="exits" />
+                    <VBox fx:id="exits"/>
                 </VBox>
 
                 <VBox spacing="20" styleClass="predmety">
                     <Label>
                         Předměty
                     </Label>
-                    <VBox fx:id="items" />
+                    <VBox fx:id="items"/>
                 </VBox>
 
                 <VBox spacing="20" styleClass="npcs">
                     <Label>
                         NPC
                     </Label>
-                    <VBox fx:id="npcs" />
+                    <VBox fx:id="npcs"/>
                 </VBox>
-            <BorderPane.margin>
-               <Insets right="10.0" />
-            </BorderPane.margin>
-            <effect>
-               <Blend />
-            </effect>
+                <BorderPane.margin>
+                    <Insets right="10.0"/>
+                </BorderPane.margin>
+                <effect>
+                    <Blend/>
+                </effect>
 
             </VBox>
 
@@ -53,18 +55,18 @@
                     <Label>
                         Batoh
                     </Label>
-                    <VBox fx:id="backpack"  />
+                    <VBox fx:id="backpack"/>
 
                 </VBox>
                 <Button fx:id="kopat" onAction="#kopat" prefHeight="55.0" prefWidth="95.0" text="Kopej" visible="false">
-</Button>
+                </Button>
             </VBox>
         </left>
 
         <bottom>
             <VBox>
-                <TextArea fx:id="textOutput" editable="false" />
-                <TextField fx:id="textInput" onKeyPressed="#onInputKeyPressed" />
+                <TextArea fx:id="textOutput" editable="false"/>
+                <TextField fx:id="textInput" onKeyPressed="#onInputKeyPressed"/>
             </VBox>
         </bottom>
         <center>
@@ -77,22 +79,22 @@
                         <menus>
                             <Menu mnemonicParsing="false" text="Menu">
                                 <items>
-                                    <MenuItem mnemonicParsing="false" onAction="#napoveda" text="Nápověda" />
-                                    <MenuItem mnemonicParsing="false" onAction="#novahra" text="Nová hra" />
+                                    <MenuItem mnemonicParsing="false" onAction="#napoveda" text="Nápověda"/>
+                                    <MenuItem mnemonicParsing="false" onAction="#novahra" text="Nová hra"/>
                                 </items>
                             </Menu>
                         </menus>
-                  <HBox.margin>
-                     <Insets left="10.0" top="5.0" />
-                  </HBox.margin>
+                        <HBox.margin>
+                            <Insets left="10.0" top="5.0"/>
+                        </HBox.margin>
                     </MenuBar>
 
-                    <VBox alignment="CENTER" prefHeight="100" prefWidth="1600" >
-<!--                        <Label fx:id="locationName" alignment="CENTER" />-->
-                        <Label fx:id="locationDescription" alignment="CENTER" />
-                  <HBox.margin>
-                     <Insets />
-                  </HBox.margin>
+                    <VBox alignment="CENTER" prefHeight="100" prefWidth="1600">
+                        <!--                        <Label fx:id="locationName" alignment="CENTER" />-->
+                        <Label fx:id="locationDescription" alignment="CENTER"/>
+                        <HBox.margin>
+                            <Insets/>
+                        </HBox.margin>
                     </VBox>
                 </children>
             </HBox>

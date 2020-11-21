@@ -49,6 +49,7 @@ public class Start extends Application {
             launch();
         }
     }
+
     /***************************************************************************
      * Metoda, prostřednictvím níž se spouští javaFx aplikace.
      *

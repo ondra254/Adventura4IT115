@@ -13,17 +13,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
-import sun.misc.IOUtils;
 
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import java.util.Collection;
-import java.util.Map;
 
 /*******************************************************************************
  * Třída MainController slouží k ovládání grafické verze aplikace
@@ -37,20 +31,21 @@ public class MainController {
     public TextField textInput;
     private IHra hra;
 
-    public Label locationName;
+    //  public Label locationName;
     public Label locationDescription;
 
     public VBox exits;
     public VBox items;
     public VBox backpack;
     public VBox npcs;
+
     public ImageView updateBackground;
     public Button kopat;
 
     /**
      * Metoda inicializujíci hru
      *
-     * @param hra
+     * @param hra hra kterou hraješ
      */
     public void init(IHra hra) {
         this.hra = hra;
@@ -77,12 +72,7 @@ public class MainController {
         updateNpc();
         updateBackground();
 
-        if (hra.getHerniPlan().getBatoh().obsahujeVec("lopata")) {
-            kopat.setVisible(true);
-
-        } else {
-            kopat.setVisible(false);
-        }
+        kopat.setVisible(hra.getHerniPlan().getBatoh().obsahujeVec("lopata"));
 
         if (hra.konecHry()) {
             kopat.setVisible(false);
@@ -108,6 +98,7 @@ public class MainController {
             String chce = npc.getChce().getNazev();
             Label npcLabel = new Label(npcName);
             InputStream Stream = getClass().getClassLoader().getResourceAsStream(npcName + ".jpg");
+            assert Stream != null;
             Image img = new Image(Stream);
             ImageView imageView = new ImageView(img);
             imageView.setFitWidth(60);
@@ -145,6 +136,7 @@ public class MainController {
             String itemName = item.getNazev();
             Label itemLabel = new Label(itemName);
             InputStream Stream = getClass().getClassLoader().getResourceAsStream(itemName + ".jpg");
+            assert Stream != null;
             Image img = new Image(Stream);
             ImageView imageView = new ImageView(img);
             imageView.setFitWidth(60);
@@ -156,15 +148,11 @@ public class MainController {
                     itemLabel.setCursor(Cursor.HAND);
                     itemLabel.setTooltip(new Tooltip(item.getNazev()));
 
-                    itemLabel.setOnMouseClicked(event -> {
-                        executeCommand("seber " + itemName);
-                    });
+                    itemLabel.setOnMouseClicked(event -> executeCommand("seber " + itemName));
 
                 } else if (item.getNazev().equals("truhla")) {
                     itemLabel.setCursor(Cursor.HAND);
-                    itemLabel.setOnMouseClicked(event -> {
-                        executeCommand("odemkni " + itemName);
-                    });
+                    itemLabel.setOnMouseClicked(event -> executeCommand("odemkni " + itemName));
 
                 } else {
                     itemLabel.setTooltip(new Tooltip("Tato vec neni prenositelna  "));
@@ -188,6 +176,7 @@ public class MainController {
             String itemName = item.getNazev();
             Label itemLabel = new Label(itemName);
             InputStream stream = getClass().getClassLoader().getResourceAsStream(itemName + ".jpg");
+            assert stream != null;
             Image img = new Image(stream);
             ImageView imageView = new ImageView(img);
             imageView.setFitWidth(60);
@@ -195,9 +184,7 @@ public class MainController {
             itemLabel.setGraphic(imageView);
             if (!hra.konecHry()) {
                 itemLabel.setCursor(Cursor.HAND);
-                itemLabel.setOnMouseClicked(event -> {
-                    executeCommand("odlož " + itemName);
-                })
+                itemLabel.setOnMouseClicked(event -> executeCommand("odlož " + itemName))
                 ;
             }
             backpack.getChildren().add(itemLabel);
@@ -222,6 +209,7 @@ public class MainController {
             exitLabel.setTooltip(new Tooltip(prostor.getPopis()));
 
             InputStream Stream = getClass().getClassLoader().getResourceAsStream(exitName + ".jpg");
+            assert Stream != null;
             Image img = new Image(Stream);
             ImageView imageView = new ImageView(img);
             imageView.setFitWidth(60);
@@ -230,10 +218,7 @@ public class MainController {
             if (!hra.konecHry()) {
                 exitLabel.setCursor(Cursor.HAND);
 
-                exitLabel.setOnMouseClicked(event -> {
-                    executeCommand("jdi " + exitName);
-
-                });
+                exitLabel.setOnMouseClicked(event -> executeCommand("jdi " + exitName));
             }
             exits.getChildren().add(exitLabel);
 
@@ -252,6 +237,7 @@ public class MainController {
 
 
         InputStream Stream = getClass().getClassLoader().getResourceAsStream(prostorName + ".jpg");
+        assert Stream != null;
         Image img = new Image(Stream);
 
         updateBackground.setImage(img);
@@ -265,7 +251,7 @@ public class MainController {
      * Metoda která provede příkaž
      * zadaný v parametru a aktualizuje hru.
      *
-     * @param command
+     * @param command příkaz který chceš provést
      */
     private void executeCommand(String command) {
         String result = hra.zpracujPrikaz(command);
@@ -286,7 +272,7 @@ public class MainController {
      * Metoda která při stlačení entru
      * odešle příkaz z textového pole ke zpracování.
      *
-     * @param keyEvent
+     * @param keyEvent stlačení klávesy
      */
     public void onInputKeyPressed(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
@@ -299,7 +285,7 @@ public class MainController {
      * Metoda která provede příkaz kopej
      * když proběhne actionEvent.
      *
-     * @param actionEvent
+     * @param actionEvent provedení akce odkazované v scene.fxml
      */
     public void kopat(ActionEvent actionEvent) {
         executeCommand("kopej truhla");
@@ -310,7 +296,7 @@ public class MainController {
      * zobrazí nápovědu v podobě html souboru
      * když proběhne actionEvent.
      *
-     * @param actionEvent
+     * @param actionEvent provedení akce odkazované v scene.fxml
      */
     public void napoveda(ActionEvent actionEvent) {
         try {
@@ -326,7 +312,7 @@ public class MainController {
      * Metoda která začne novou hru
      * když proběhne actionEvent.
      *
-     * @param actionEvent
+     * @param actionEvent provedení akce odkazované v scene.fxml
      */
     public void novahra(ActionEvent actionEvent) {
 
