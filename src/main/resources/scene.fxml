@@ -1,99 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <StackPane stylesheets="styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.seso00.MainController">
+    <ImageView fx:id="updateBackground" pickOnBounds="true" preserveRatio="true" />
 
-<BorderPane>
+    <BorderPane>
 
 
-    <right>
-        <VBox spacing="20" BorderPane.alignment="CENTER">
-            <Label>
-                <font>
-                    <Font size="15.0" />
-                </font>
-            </Label>
-
-            <VBox spacing="20">
+        <right>
+            <VBox spacing="20" BorderPane.alignment="CENTER">
                 <Label>
-                    <text>Východy</text>
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <VBox fx:id="exits" />
+
+                <VBox spacing="20">
+                    <Label>
+                        <text>Východy</text>
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+                    <VBox fx:id="exits" />
+                </VBox>
+
+                <VBox spacing="20">
+                    <Label>
+                        <text>Předměty</text>
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+                    <VBox fx:id="items" />
+                </VBox>
+
+                <VBox spacing="20">
+                    <Label>
+                        <text>NPC</text>
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+                    <VBox fx:id="npcs" />
+                </VBox>
+
             </VBox>
 
-            <VBox spacing="20">
+        </right>
+
+        <left>
+            <VBox spacing="20" BorderPane.alignment="CENTER">
                 <Label>
-                    <text>Předměty</text>
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <VBox fx:id="items" />
+                <VBox spacing="20">
+                    <Label>
+                        <text>Batoh</text>
+                        <font>
+                            <Font size="15.0" />
+                        </font>
+                    </Label>
+                    <VBox fx:id="backpack" />
+                </VBox>
+                <Button fx:id="kopat" onAction="#kopat" text="Kopej" visible="false" />
             </VBox>
+        </left>
 
-            <VBox spacing="20">
-                <Label>
-                    <text>Batoh</text>
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
-                <VBox fx:id="backpack" />
+        <bottom>
+            <VBox>
+                <TextArea fx:id="textOutput" editable="false" />
+                <TextField fx:id="textInput" onKeyPressed="#onInputKeyPressed" />
             </VBox>
+        </bottom>
+        <center>
 
-            <VBox spacing="20">
-                <Label>
-                    <text>NPC</text>
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
-                <VBox fx:id="npcs" />
-            </VBox>
-            <Button fx:id="kopat" onAction="#kopat" text="Kopej" visible="false" />
-        </VBox>
+        </center>
+        <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <children>
+                    <MenuBar>
+                        <menus>
+                            <Menu mnemonicParsing="false" text="Menu">
+                                <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#napoveda" text="Nápověda" />
+                                    <MenuItem mnemonicParsing="false" onAction="#novahra" text="Nová hra" />
+                                </items>
+                            </Menu>
+                        </menus>
+                    </MenuBar>
 
-    </right>
+                    <VBox>
+                        <Label alignment="CENTER" fx:id="locationName" />
+                        <Label alignment="CENTER" fx:id="locationDescription" />
+                  <HBox.margin>
+                     <Insets left="150.0" />
+                  </HBox.margin>
+                    </VBox>
+                </children>
+            </HBox>
+        </top>
 
-    <bottom>
-        <VBox>
-            <TextArea fx:id="textOutput" editable="false" />
-            <TextField fx:id="textInput" onKeyPressed="#onInputKeyPressed" />
-        </VBox>
-    </bottom>
-   <center>
-
-   </center>
-      <top>
-         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-               <MenuBar>
-                 <menus>
-                   <Menu mnemonicParsing="false" text="Menu">
-                     <items>
-                       <MenuItem  onAction="#napoveda" mnemonicParsing="false" text="Nápověda" />
-                       <MenuItem  onAction="#novahra" mnemonicParsing="false" text="Nová hra" />
-                     </items>
-                   </Menu>
-                 </menus>
-               </MenuBar>
-      
-              <VBox>
-                  <Label fx:id="locationName" />
-                  <Label fx:id="locationDescription" />
-              </VBox>
-            </children>
-         </HBox>
-      </top>
-
-</BorderPane>
-   <ImageView fx:id="updateBackground" pickOnBounds="true" preserveRatio="true" />
+    </BorderPane>
 
 </StackPane>

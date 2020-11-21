@@ -45,6 +45,7 @@ public class MainController {
     public void init(IHra hra) {
         this.hra = hra;
         update();
+        hra.vratUvitani();
     }
 
     private void update() {
@@ -68,6 +69,14 @@ public class MainController {
         } else {
             kopat.setVisible(false);
         }
+
+        if (hra.konecHry()){
+            hra.vratEpilog();
+            textInput.setVisible(false);
+
+        }else {textInput.setVisible(true);
+
+        }
     }
 
     private void updateNpc() {
@@ -84,6 +93,7 @@ public class MainController {
             imageView.setFitWidth(60);
             imageView.setFitHeight(40);
             npcLabel.setGraphic(imageView);
+            if (!hra.konecHry()){
             npcLabel.setCursor(Cursor.HAND);
 
 
@@ -95,7 +105,7 @@ public class MainController {
                     executeCommand("napadnout " + npcName);
                 }
 
-            });
+            });}
             npcs.getChildren().add(npcLabel);
         }
     }
@@ -114,6 +124,7 @@ public class MainController {
             imageView.setFitHeight(40);
             itemLabel.setGraphic(imageView);
 
+            if (!hra.konecHry()){
             if (item.isPrenositelna()) {
                 itemLabel.setCursor(Cursor.HAND);
                 itemLabel.setTooltip(new Tooltip(item.getNazev()));
@@ -130,7 +141,7 @@ public class MainController {
 
             } else {
                 itemLabel.setTooltip(new Tooltip("Tato vec neni prenositelna  "));
-            }
+            }}
             items.getChildren().add(itemLabel);
         }
     }
@@ -149,11 +160,12 @@ public class MainController {
             imageView.setFitWidth(60);
             imageView.setFitHeight(40);
             itemLabel.setGraphic(imageView);
+            if (!hra.konecHry()){
             itemLabel.setCursor(Cursor.HAND);
             itemLabel.setOnMouseClicked(event -> {
                 executeCommand("odlož " + itemName);
             })
-            ;
+            ;}
             backpack.getChildren().add(itemLabel);
 
 
@@ -167,7 +179,7 @@ public class MainController {
         for (Prostor prostor : exitList) {
             String exitName = prostor.getNazev();
             Label exitLabel = new Label(exitName);
-            exitLabel.setCursor(Cursor.HAND);
+
             exitLabel.setTooltip(new Tooltip(prostor.getPopis()));
 
             InputStream Stream = getClass().getClassLoader().getResourceAsStream(exitName + ".jpg");
@@ -176,11 +188,13 @@ public class MainController {
             imageView.setFitWidth(60);
             imageView.setFitHeight(40);
             exitLabel.setGraphic(imageView);
+            if (!hra.konecHry()){
+            exitLabel.setCursor(Cursor.HAND);
 
             exitLabel.setOnMouseClicked(event -> {
                 executeCommand("jdi " + exitName);
 
-            });
+            });}
             exits.getChildren().add(exitLabel);
 
         }
@@ -197,6 +211,9 @@ public class MainController {
         Image img = new Image(Stream);
 
         updateBackground.setImage(img);
+        updateBackground.setFitHeight(1600);
+        updateBackground.setFitHeight(900);
+
 
     }
 
@@ -237,6 +254,9 @@ public class MainController {
 
 
     public void novahra(ActionEvent actionEvent) {
+
         executeCommand("konec");
+        textOutput.clear();
+        init(new Hra());
     }
 }

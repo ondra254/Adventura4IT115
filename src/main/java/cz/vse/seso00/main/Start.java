@@ -63,6 +63,9 @@ public class Start extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setFullScreen(false);
+        primaryStage.setWidth(1600);
+        primaryStage.setHeight(900);
+
 
         MainController controller = loader.getController();
         IHra hra = new Hra();
