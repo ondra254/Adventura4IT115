@@ -13,19 +13,16 @@ public class PrikazNapadnout implements IPrikaz {
 
     private static final String NAZEV = "napadnout";
     private final HerniPlan plan;
-    private final Batoh batoh;
     private final Hra hra;
 
     /**
      *  Konstruktor třídy
      *
      *  @param plan herní plán, ve kterém se bude ve hře "chodit"
-     *  @param batoh batoh který nosíš
      *  @param hra hra kterou hraješ
      */
-    public PrikazNapadnout(HerniPlan plan, Batoh batoh, Hra hra){
+    public PrikazNapadnout(HerniPlan plan, Hra hra){
         this.plan = plan;
-        this.batoh = batoh;
         this.hra = hra;}
 
     /**
@@ -53,15 +50,15 @@ public class PrikazNapadnout implements IPrikaz {
         if (aktualniProstor.obsahujeNpc(jmeno)) {
             Vec dava = npc.getDava();
             if (npc.getBoj()) {
-                if (batoh.obsahujeVec("meč")) {
+                if (plan.getBatoh().obsahujeVec("meč")) {
                     Map<String, Vec> vymena = npc.vymenitVec();
                     aktualniProstor.odstranNpc(npc.getNazev());
 
-                    if (batoh.plny()) {
+                    if (plan.getBatoh().plny()) {
                         aktualniProstor.pridejVec(dava);
                     }
                     else {
-                        batoh.vlozVec(vymena.get("pridej")); }
+                        plan.getBatoh().vlozVec(vymena.get("pridej")); }
                     return "Zabil jsi " + npc.getNazev() + " a dostal jsi " + dava.getNazev();
                 }
                     plan.setProhra(true);

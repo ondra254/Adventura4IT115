@@ -1,7 +1,6 @@
 package cz.vse.seso00.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  *  Třída Batoh -  Batoh slouží k uchovávání a přenášení získaných předmětů
@@ -15,6 +14,8 @@ public class Batoh {
     private Map<String, Vec> obsah;
     public Batoh() {obsah = new HashMap<>();}
     private static final int kapacita = 5;
+
+
 
     /**
      * zkontroluje jestli není batoh plný,
@@ -41,6 +42,15 @@ public class Batoh {
         if(obsah.containsKey(vec)){
             obsah.remove(vec);}
             return vec;
+    }
+
+    /**
+     * zobrazí obsah batohu
+     * @return vrati seznam věcí v batohu
+     */
+    public Map<String, Vec> getObsah(){
+    return obsah;
+
     }
 
     /**

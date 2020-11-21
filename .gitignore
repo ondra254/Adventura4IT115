@@ -24,4 +24,8 @@ hs_err_pid*
 
 .idea
 target
+<<<<<<< HEAD
 .*iml
+=======
+*.iml
+>>>>>>> dev

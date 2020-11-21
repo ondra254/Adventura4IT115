@@ -1,5 +1,7 @@
 package cz.vse.seso00.model;
 
+import cz.vse.seso00.MainController;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -13,7 +15,7 @@ import java.util.stream.Collectors;
  * si prostor ukládá odkaz na sousedící prostor.
  *
  * @author Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Ondřej Šesták
- * @version    červen 2020 (1.0)
+ * @version červen 2020 (1.0)
  */
 public class Prostor {
 
@@ -25,16 +27,14 @@ public class Prostor {
     private final Map<String, Npc> npcs;
     private final Map<String, Vec> neviditelneVeci;
 
-    //Koste, instance Vec Koste
-    //Jablko, instance Vec Jablko
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
      * před domem"
      *
-     * @param nazev nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
-     *              víceslovný název bez mezer.
-     * @param popis Popis prostoru.
+     * @param nazev  nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
+     *               víceslovný název bez mezer.
+     * @param popis  Popis prostoru.
      * @param truhla Hodnota zda se v prostoru nachází truhla.
      */
     public Prostor(String nazev, String popis, Boolean truhla) {
@@ -45,6 +45,24 @@ public class Prostor {
         veci = new HashMap<>();
         npcs = new HashMap<>();
         neviditelneVeci = new HashMap<>();
+    }
+
+    /**
+     * Vrací seznam npc v prostoru
+     *
+     * @return seznam npc
+     */
+    public Map<String, Npc> getNpcs() {
+        return npcs;
+    }
+
+    /**
+     * Vrací seznam věcí v prostoru
+     *
+     * @return seznam veci
+     */
+    public Map<String, Vec> getVeci() {
+        return veci;
     }
 
     /**
@@ -117,6 +135,16 @@ public class Prostor {
     }
 
     /**
+     * Vrací popis prostoru (byl zadán při vytváření prostoru jako parametr
+     * konstruktoru)
+     *
+     * @return popis prostoru
+     */
+    public String getPopis() {
+        return popis;
+    }
+
+    /**
      * Vrací "dlouhý" popis prostoru, který může vypadat následovně: Jsi v
      * mistnosti/prostoru vstupni hala budovy VSE na Jiznim meste. vychody:
      * chodba bufet ucebna
@@ -124,7 +152,7 @@ public class Prostor {
      * @return Dlouhý popis prostoru
      */
     public String dlouhyPopis() {
-        return  "************************************************************************************" +
+        return "************************************************************************************" +
                 "\nJsi v mistnosti/prostoru " + popis + ".\n"
                 + popisVychodu() + "\n"
                 + popisVeci() + "\n"
@@ -174,6 +202,7 @@ public class Prostor {
 
     }
 
+
     /**
      * Vrací prostor, který sousedí s aktuálním prostorem a jehož název je zadán
      * jako parametr. Pokud prostor s udaným jménem nesousedí s aktuálním
@@ -210,6 +239,7 @@ public class Prostor {
 
     /**
      * přidá věc do prostoru
+     *
      * @param vec kterou chceš do prostoru přidat
      */
     public void pridejVec(Vec vec) {
@@ -218,14 +248,16 @@ public class Prostor {
 
     /**
      * přidá neviditelnou věc do prostoru
+     *
      * @param vec kterou chceš do prostoru přidat
      */
     public void pridejNevVec(Vec vec) {
-        neviditelneVeci.put(vec.getNazev(),vec);
+        neviditelneVeci.put(vec.getNazev(), vec);
     }
 
     /**
      * zjistí jestli se v prostoru nachází konkrétní věc
+     *
      * @param nazevVeci o kterou se zajímame
      * @return true pokud se věc v prostoru nachází, false pokud se věc v prostoru nenachází
      */
@@ -235,15 +267,16 @@ public class Prostor {
 
     /**
      * odstraní věc z prostoru
+     *
      * @param jmenoVeci kterou chceme odstranit
      * @return pokud se věc podařilo ostranit tak vrátí její název,
-     *         pokud se ji nepodařilo odstranit, vrátí null
+     * pokud se ji nepodařilo odstranit, vrátí null
      */
-    public Vec odstranVec (String jmenoVeci) {
+    public Vec odstranVec(String jmenoVeci) {
         Vec nalezenaVec;
         if (veci.containsKey(jmenoVeci)) {
             nalezenaVec = veci.get(jmenoVeci);
-            if (nalezenaVec.isPrenositelna() ) {
+            if (nalezenaVec.isPrenositelna()) {
                 veci.remove(jmenoVeci);
                 return nalezenaVec;
             }
@@ -254,14 +287,15 @@ public class Prostor {
 
     /**
      * odstraní neviditelnou věc z prostoru
+     *
      * @param jmenoVeci kterou chceme odstranit
      * @return pokud se věc podařilo ostranit tak vrátí její název,
-     *         pokud se ji nepodařilo odstranit, vrátí null
+     * pokud se ji nepodařilo odstranit, vrátí null
      */
-    public Vec odstranNevVec (String jmenoVeci) {
+    public Vec odstranNevVec(String jmenoVeci) {
         Vec nalezenaVec;
         if (neviditelneVeci.containsKey(jmenoVeci)) {
-        nalezenaVec = neviditelneVeci.get(jmenoVeci);
+            nalezenaVec = neviditelneVeci.get(jmenoVeci);
             neviditelneVeci.remove(jmenoVeci);
             return nalezenaVec;
         }
@@ -270,14 +304,16 @@ public class Prostor {
 
     /**
      * přidá npc do prostoru
+     *
      * @param npc které chceš do prostoru přidat
      */
     public void pridejNpc(Npc npc) {
-        npcs.put(npc.getNazev(),npc);
+        npcs.put(npc.getNazev(), npc);
     }
 
     /**
      * zjistí jestli se v prostoru nachází konkrétní npc
+     *
      * @param nazevNpc o které se zajímame
      * @return true pokud se npc v prostoru nachází, false pokud se npc v prostoru nenachází
      */
@@ -287,14 +323,16 @@ public class Prostor {
 
     /**
      * odstraní npc z prostoru
+     *
      * @param jmenoNpc které chceš z prostoru odstranit
      */
-    public void odstranNpc (String jmenoNpc) {
+    public void odstranNpc(String jmenoNpc) {
         npcs.remove(jmenoNpc);
     }
 
     /**
      * vrátí npc podle názvu
+     *
      * @param nazevNpc o které se zajímáme
      * @return Npc podle zadaného názvu
      */
@@ -304,6 +342,7 @@ public class Prostor {
 
     /**
      * Vrítí hodnotu zda se v prostoru nachází truhla
+     *
      * @return true pokud se v prostoru truhla nachází,
      * false pokud se v prostoru truhla nenachází
      */

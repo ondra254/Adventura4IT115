@@ -25,13 +25,16 @@ public class HerniPlan {
      */
     public HerniPlan() {
         zalozProstoryHry();
-
     }
+
     /**
      *  Vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví domeček.
      */
     private void zalozProstoryHry() {
+
+
+
 
         // vytvářejí se jednotlivé prostory
         Prostor jeskyne = new Prostor("jeskyně","Temná jeskyně",false);
@@ -41,7 +44,7 @@ public class HerniPlan {
         Prostor hospoda = new Prostor("hospoda", "Hospůdka u Lachtana",false);
         Prostor hora = new Prostor("hora","Vysoká hora",false);
         Prostor zbrojirna = new Prostor("zbrojírna","Zatuchlá zbrojírna",false);
-        Prostor most = new Prostor("most" , "Most spojující Ostrov Lebek a Ostrov Smůly",false);
+        Prostor most = new Prostor("most","Most spojující Ostrov Lebek a Ostrov Smůly",false);
 
         // přiřazují se průchody mezi prostory (sousedící prostory)
         jeskyne.setVychod(palmovyHaj);
@@ -72,8 +75,8 @@ public class HerniPlan {
         Vec zidle = new Vec("židle","rozvrzaná židle", false);
         Vec pivo = new Vec("pivo","chlazená Plznička",true);
         Vec regal = new Vec("regál", "regál se zbraněmi", false);
-        Vec zlatyNuget = new Vec("zlatý_nuget","zlatý nuget",true);
-        Vec kamen = new Vec("kamen","zde",true);
+        Vec zlato = new Vec("zlato","zlatý nuget",true);
+        Vec kamen = new Vec("kámen","zde",true);
         Vec balvan = new Vec("balvan","obří balvan",false);
         Vec koste = new Vec("koště","staré koště",true);
         Vec skrin = new Vec("skříň","velká dubová almara",false);
@@ -85,12 +88,13 @@ public class HerniPlan {
         Vec truhla = new Vec("truhla","truhla s pokladem",false);
         Vec prkno = new Vec("prkno","zlomené prkno", true);
         Vec podtacek = new Vec( "podtácek", "podtácek pod pivo", true);
+        Vec smrt = new Vec("smrt","smrt",true);
 
         //Přidání věcí do prostoru
-        hora.pridejVec(zlatyNuget);
+        hora.pridejVec(zlato);
         hora.pridejVec(kamen);
         hora.pridejVec(balvan);
-        hospoda.pridejVec(koste);
+        zbrojirna.pridejVec(koste);
         hospoda.pridejVec(skrin);
         hospoda.pridejVec(stul);
         hospoda.pridejVec(zidle);
@@ -103,12 +107,10 @@ public class HerniPlan {
         most.pridejVec(prkno);
         jeskyne.pridejVec(kost);
 
-        hospoda.pridejVec(kokos);
-
         //Vytvoření npc
         Npc hospodsky = new Npc("hospodský", "Potřeboval bych kokos, když mi ho seženeš tak ti za něj dám lopatu.",kokos,lopata,false, true);
-        Npc zbrojir = new Npc("zbrojíř", "Jsem ochotný ti prodat tento meč za kus zlata, zkus se podívat na nedalekou horu.",zlatyNuget,mec,false,true);
-        Npc padouch = new Npc("padouch","jsem padouch",null ,klic,true,false);
+        Npc zbrojir = new Npc("zbrojíř", "Jsem ochotný ti prodat tento meč za kus zlata, zkus se podívat na nedalekou horu.",zlato,mec,false,true);
+        Npc padouch = new Npc("padouch","jsem padouch",smrt ,klic,true,false);
         Npc opilec = new Npc("opilec","Podle legend zde na souostroví ztroskotala loď s pokladem.",banan,pivo,false,true);
 
         //Přidání npc do prostoru

@@ -11,19 +11,16 @@ public class PrikazOdemkni implements IPrikaz {
 
     private static final String NAZEV = "odemkni";
     private final HerniPlan plan;
-    private final Batoh batoh;
     private final Hra hra;
 
     /**
      *  Konstruktor třídy
      *
      *  @param plan herní plán, ve kterém se bude ve hře "chodit"
-     *  @param batoh batoh který nosíš
      *  @param hra hra kterou hraješ
      */
-    public PrikazOdemkni(HerniPlan plan, Batoh batoh, Hra hra) {
+    public PrikazOdemkni(HerniPlan plan, Hra hra) {
         this.plan = plan;
-        this.batoh = batoh;
         this.hra= hra;
     }
 
@@ -49,7 +46,7 @@ public class PrikazOdemkni implements IPrikaz {
 
         if (aktualniProstor.obsahujeVec(nazevVeci)){
                 if (aktualniProstor.obsahujeVec("truhla")) {
-                    if(batoh.obsahujeVec("klíč")) {
+                    if(plan.getBatoh().obsahujeVec("klíč")) {
                     plan.setVyhra(true);
                     hra.setKonecHry();
                     return "Odemkl jsi truhlu!!!";
