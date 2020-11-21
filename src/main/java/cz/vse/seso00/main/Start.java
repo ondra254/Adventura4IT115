@@ -62,9 +62,13 @@ public class Start extends Application {
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setFullScreen(false);
-        primaryStage.setWidth(1600);
-        primaryStage.setHeight(900);
+
+        primaryStage.setMaxWidth(1760);
+        primaryStage.setMaxHeight(990);
+
+        primaryStage.setMinWidth(1760);
+        primaryStage.setMinHeight(990);
+
 
 
         MainController controller = loader.getController();

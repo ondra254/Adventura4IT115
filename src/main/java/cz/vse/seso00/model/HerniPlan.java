@@ -94,7 +94,7 @@ public class HerniPlan {
         hora.pridejVec(zlatyNuget);
         hora.pridejVec(kamen);
         hora.pridejVec(balvan);
-        hospoda.pridejVec(koste);
+        zbrojirna.pridejVec(koste);
         hospoda.pridejVec(skrin);
         hospoda.pridejVec(stul);
         hospoda.pridejVec(zidle);
@@ -106,8 +106,6 @@ public class HerniPlan {
         plazLebek.pridejNevVec(truhla);
         most.pridejVec(prkno);
         jeskyne.pridejVec(kost);
-
-        hospoda.pridejVec(kokos);
 
         //Vytvoření npc
         Npc hospodsky = new Npc("hospodský", "Potřeboval bych kokos, když mi ho seženeš tak ti za něj dám lopatu.",kokos,lopata,false, true);

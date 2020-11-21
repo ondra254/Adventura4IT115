@@ -2,18 +2,22 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <StackPane stylesheets="styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.seso00.MainController">
-    <ImageView fx:id="updateBackground" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="updateBackground" fitHeight="311.0" fitWidth="800" pickOnBounds="true" preserveRatio="true">
+      <StackPane.margin>
+         <Insets bottom="200.0" />
+      </StackPane.margin></ImageView>
 
     <BorderPane>
 
 
         <right>
-            <VBox spacing="20" BorderPane.alignment="CENTER">
+            <VBox spacing="20" stylesheets="@styles.css" BorderPane.alignment="CENTER">
                 <Label>
                     <font>
                         <Font size="15.0" />
@@ -49,6 +53,12 @@
                     </Label>
                     <VBox fx:id="npcs" />
                 </VBox>
+            <BorderPane.margin>
+               <Insets right="10.0" />
+            </BorderPane.margin>
+            <effect>
+               <Blend />
+            </effect>
 
             </VBox>
 
@@ -69,6 +79,9 @@
                         </font>
                     </Label>
                     <VBox fx:id="backpack" />
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
                 </VBox>
                 <Button fx:id="kopat" onAction="#kopat" text="Kopej" visible="false" />
             </VBox>
@@ -84,7 +97,7 @@
 
         </center>
         <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="50" prefWidth="200.0" BorderPane.alignment="CENTER">
                 <children>
                     <MenuBar>
                         <menus>
@@ -97,11 +110,11 @@
                         </menus>
                     </MenuBar>
 
-                    <VBox>
-                        <Label alignment="CENTER" fx:id="locationName" />
-                        <Label alignment="CENTER" fx:id="locationDescription" />
+                    <VBox alignment="CENTER"  prefHeight="100" prefWidth="1600">
+                        <Label fx:id="locationName" alignment="CENTER" />
+                        <Label fx:id="locationDescription" alignment="CENTER" />
                   <HBox.margin>
-                     <Insets left="150.0" />
+                     <Insets />
                   </HBox.margin>
                     </VBox>
                 </children>

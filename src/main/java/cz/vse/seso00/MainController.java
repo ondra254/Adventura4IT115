@@ -211,8 +211,8 @@ public class MainController {
         Image img = new Image(Stream);
 
         updateBackground.setImage(img);
-        updateBackground.setFitHeight(1600);
-        updateBackground.setFitHeight(900);
+        updateBackground.setFitWidth(1200);
+        updateBackground.setFitHeight(600);
 
 
     }
