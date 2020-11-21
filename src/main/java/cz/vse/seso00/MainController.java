@@ -1,19 +1,27 @@
 package cz.vse.seso00;
 
-
 import cz.vse.seso00.model.*;
+import javafx.event.ActionEvent;
 import javafx.scene.Cursor;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import sun.misc.IOUtils;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Map;
 
@@ -32,13 +40,11 @@ public class MainController {
     public VBox backpack;
     public VBox npcs;
     public ImageView updateBackground;
-
+    public Button kopat;
 
     public void init(IHra hra) {
         this.hra = hra;
         update();
-
-
     }
 
     private void update() {
@@ -48,11 +54,20 @@ public class MainController {
         String description = getAktualniProstor().getPopis();
         locationDescription.setText(description);
 
+
         updateExits();
         updateItems();
         updateBatoh();
         updateNpc();
         updateBackground();
+
+        if (hra.getHerniPlan().getBatoh().obsahujeVec("lopata")) {
+            kopat.setVisible(true);
+
+
+        } else {
+            kopat.setVisible(false);
+        }
     }
 
     private void updateNpc() {
@@ -73,10 +88,10 @@ public class MainController {
 
 
             npcLabel.setOnMouseClicked(event -> {
-                if(!npc.getBoj()){
-               executeCommand("obchod " + npcName +" "+ chce );
-                //npc menu
-                    }else{
+                if (!npc.getBoj()) {
+                    executeCommand("obchod " + npcName + " " + chce);
+                    //npc menu
+                } else {
                     executeCommand("napadnout " + npcName);
                 }
 
@@ -107,12 +122,19 @@ public class MainController {
                     executeCommand("seber " + itemName);
                 });
 
+            } else if (item.getNazev().equals("truhla")) {
+                itemLabel.setCursor(Cursor.HAND);
+                itemLabel.setOnMouseClicked(event -> {
+                    executeCommand("odemkni " + itemName);
+                });
+
             } else {
                 itemLabel.setTooltip(new Tooltip("Tato vec neni prenositelna  "));
             }
             items.getChildren().add(itemLabel);
         }
     }
+
     private void updateBatoh() {
         Collection<Vec> obsahList = hra.getHerniPlan().getBatoh().getObsah().values();
         backpack.getChildren().clear();
@@ -135,7 +157,7 @@ public class MainController {
             backpack.getChildren().add(itemLabel);
 
 
-       }
+        }
     }
 
     private void updateExits() {
@@ -165,7 +187,7 @@ public class MainController {
 
     }
 
-    private void updateBackground(){
+    private void updateBackground() {
 
         Prostor prostor = hra.getHerniPlan().getAktualniProstor();
         String prostorName = prostor.getNazev();
@@ -175,7 +197,6 @@ public class MainController {
         Image img = new Image(Stream);
 
         updateBackground.setImage(img);
-
 
     }
 
@@ -193,9 +214,29 @@ public class MainController {
 
 
     public void onInputKeyPressed(KeyEvent keyEvent) {
-        if (keyEvent.getCode()== KeyCode.ENTER) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
             executeCommand(textInput.getText());
             textInput.setText("");
         }
+    }
+
+    public void kopat(ActionEvent actionEvent) {
+        executeCommand("kopej truhla");
+    }
+
+
+    public void napoveda(ActionEvent actionEvent) {
+        try {
+            Desktop desktop = java.awt.Desktop.getDesktop();
+            URI oURL = new URI("http://localhost:63342/Adventura4IT115/n%C3%A1pov%C4%9Bda.html?_ijt=ckevl2kdm0e5mttfvgebdjvihs");
+            desktop.browse(oURL);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void novahra(ActionEvent actionEvent) {
+        executeCommand("konec");
     }
 }

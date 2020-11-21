@@ -11,17 +11,17 @@ public class PrikazSeber implements IPrikaz {
 
     private static final String NAZEV = "seber";
     private final HerniPlan plan;
-    private final Batoh batoh;
+//    private final Batoh batoh;
 
     /**
      *  Konstruktor třídy
      *
      *  @param plan herní plán, ve kterém se bude ve hře "chodit"
-     *  @param batoh batoh který nosíš
+//     *  @param batoh batoh který nosíš
      */
-    public PrikazSeber(HerniPlan plan, Batoh batoh) {
+    public PrikazSeber(HerniPlan plan) {
         this.plan = plan;
-        this.batoh = batoh;
+//        this.batoh = batoh;
 
     }
 
@@ -53,12 +53,12 @@ public class PrikazSeber implements IPrikaz {
             if (vec == null) {
                 return "Taková věc není přenositelná!";
             }
-            else if (batoh.plny()) {
+            else if (plan.getBatoh().plny()) {
                 aktualniProstor.pridejVec(vec);
                 return "Batoh je plný";
             }
             else {
-                batoh.vlozVec(vec);
+                plan.getBatoh().vlozVec(vec);
                 return "Sebral jsi " + nazevVeci;
             }
         }return "Taková věc tu není!";

@@ -16,25 +16,23 @@ public class Hra implements IHra {
     private final SeznamPrikazu platnePrikazy;    // obsahuje seznam přípustných příkazů
     private final HerniPlan herniPlan;
     private boolean konecHry = false;
-    private final Batoh batoh;
 
     /**
      *  Vytváří hru a inicializuje místnosti (prostřednictvím třídy HerniPlan) a seznam platných příkazů.
      */
     public Hra() {
-        batoh = new Batoh();
         herniPlan = new HerniPlan();
         platnePrikazy = new SeznamPrikazu();
         platnePrikazy.vlozPrikaz(new PrikazJdi(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazKonec(this));
-        platnePrikazy.vlozPrikaz(new PrikazKopej(herniPlan,batoh));
-        platnePrikazy.vlozPrikaz(new PrikazNapadnout(herniPlan,batoh,this));
+        platnePrikazy.vlozPrikaz(new PrikazKopej(herniPlan,herniPlan.getBatoh()));
+        platnePrikazy.vlozPrikaz(new PrikazNapadnout(herniPlan,herniPlan.getBatoh(),this));
         platnePrikazy.vlozPrikaz(new PrikazNapoveda(platnePrikazy));
-        platnePrikazy.vlozPrikaz(new PrikazObchod(herniPlan, batoh));
-        platnePrikazy.vlozPrikaz(new PrikazObsahBatohu(batoh));
-        platnePrikazy.vlozPrikaz(new PrikazOdloz(herniPlan,batoh));
-        platnePrikazy.vlozPrikaz(new PrikazSeber(herniPlan,batoh));
-        platnePrikazy.vlozPrikaz(new PrikazOdemkni(herniPlan,batoh,this));
+        platnePrikazy.vlozPrikaz(new PrikazObchod(herniPlan,herniPlan.getBatoh()));
+        platnePrikazy.vlozPrikaz(new PrikazObsahBatohu(herniPlan.getBatoh()));
+        platnePrikazy.vlozPrikaz(new PrikazOdloz(herniPlan,herniPlan.getBatoh()));
+        platnePrikazy.vlozPrikaz(new PrikazSeber(herniPlan));
+        platnePrikazy.vlozPrikaz(new PrikazOdemkni(herniPlan,herniPlan.getBatoh(),this));
 
     }
 

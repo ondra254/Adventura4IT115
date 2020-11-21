@@ -17,7 +17,6 @@ public class Batoh {
 
 
 
-
     /**
      * zkontroluje jestli není batoh plný,
      * pokud není, tak vloží vec do batohu

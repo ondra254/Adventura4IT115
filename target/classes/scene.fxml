@@ -5,16 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane  stylesheets="styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.seso00.MainController">
+<StackPane stylesheets="styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.seso00.MainController">
 
 <BorderPane>
-
-    <top>
-        <VBox BorderPane.alignment="CENTER">
-            <Label fx:id="locationName" />
-            <Label fx:id="locationDescription" />
-        </VBox>
-    </top>
 
 
     <right>
@@ -64,8 +57,9 @@
                 </Label>
                 <VBox fx:id="npcs" />
             </VBox>
-
+            <Button fx:id="kopat" onAction="#kopat" text="Kopej" visible="false" />
         </VBox>
+
     </right>
 
     <bottom>
@@ -77,6 +71,27 @@
    <center>
 
    </center>
+      <top>
+         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+               <MenuBar>
+                 <menus>
+                   <Menu mnemonicParsing="false" text="Menu">
+                     <items>
+                       <MenuItem  onAction="#napoveda" mnemonicParsing="false" text="Nápověda" />
+                       <MenuItem  onAction="#novahra" mnemonicParsing="false" text="Nová hra" />
+                     </items>
+                   </Menu>
+                 </menus>
+               </MenuBar>
+      
+              <VBox>
+                  <Label fx:id="locationName" />
+                  <Label fx:id="locationDescription" />
+              </VBox>
+            </children>
+         </HBox>
+      </top>
 
 </BorderPane>
    <ImageView fx:id="updateBackground" pickOnBounds="true" preserveRatio="true" />

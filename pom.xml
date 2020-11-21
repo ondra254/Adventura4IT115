@@ -7,6 +7,7 @@
     <groupId>cz.vse.seso00</groupId>
     <artifactId>Adventura4IT115</artifactId>
     <version>1.0.0</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>

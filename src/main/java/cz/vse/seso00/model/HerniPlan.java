@@ -25,13 +25,14 @@ public class HerniPlan {
      */
     public HerniPlan() {
         zalozProstoryHry();
-
     }
+
     /**
      *  Vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví domeček.
      */
     private void zalozProstoryHry() {
+
 
 
 
@@ -121,7 +122,6 @@ public class HerniPlan {
         jeskyne.pridejNpc(padouch);
 
         aktualniProstor = most;  // hra začíná na mostě
-
     }
     
     /**
